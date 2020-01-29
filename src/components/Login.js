@@ -10,9 +10,9 @@ const Login = (props) => {
     	<div className="d-flex justify-content-center h-100">
     		<div className="card">
     			<div className="card-header">
-    				<h3>Iniciar Sesión</h3>
+    				<h3 className="titulo"><center><b>INICIAR SESIÓN</b></center></h3>
     				<div className="d-flex justify-content-end social_icon">
-    					<img src={bolivia} className="img-fluid logoCabeza" alt="Responsive image" />
+    					<img src={bolivia} className="img-fluid logoCabeza" alt="Escudo de Bolivia" />
     				</div>
     			</div>
     			<div className="card-body">
@@ -31,12 +31,12 @@ const Login = (props) => {
     						<input type="password" className="form-control" placeholder="Contraseña" />
     					</div>
     					<div className="form-group">
-    						<input type="submit" value="Ingresar" className="btn float-right login_btn" />
+    						<center><input type="submit" value="Entrar" className="btn login_btn" /></center>
     					</div>
     				</form>
     			</div>
     			<div className="card-footer">
-              <img src={logo} className="img-fluid logoFooter" alt="Responsive image" />
+              <img src={logo} className="img-fluid logoFooter" alt="Logo BoA"/>
     			</div>
     		</div>
     	</div>

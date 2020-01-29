@@ -58,11 +58,9 @@ font-family: 'Numans', sans-serif;
 
 }
 
-/* .container  {
-  padding-top: 13%;
-  height: 100%;
-  align-content: center;
-} */
+.titulo{
+  text-shadow: 3px 0px 2px rgba(0,0,0,0.6);
+}
 
 .logoCabeza{
   width: 30%;
@@ -72,12 +70,12 @@ font-family: 'Numans', sans-serif;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 35%;
+  width: 50%;
 
 }
 
 .card{
-height: 370px;
+height: 400px;
 margin-top: auto;
 margin-bottom: auto;
 width: 400px;
