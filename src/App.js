@@ -1,13 +1,25 @@
 import React from 'react';
 
+//llamamos los componentes que nos creamos
 import Login from "./components/Login";
+import Inicio from "./components/Inicio";
+
+//Importamos la libreria de rutas para el proyecto
+import {BrowserRouter, Route, Link} from "react-router-dom";
 
 
 
 function App() {
   return (
     <div>
-      <Login/>
+      <BrowserRouter>
+
+                <switch>
+                    <Route  exact path="/Index" component={Inicio}/>
+                    <Route  path="/Login" component={Login}/>
+                </switch>
+
+            </BrowserRouter>
     </div>
   );
 }
