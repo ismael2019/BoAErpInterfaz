@@ -30,8 +30,8 @@ const Login = (props) => {
   const [carga, setCarga] = useState('');
 
   {/*creamos hooks para cambiar el estado del mensaje*/}
-  const [mensaje, setMensaje] = useState('danger');
-  const [aviso, setAviso] = useState('Verifique los datos');
+  const [mensaje, setMensaje] = useState('');
+  const [aviso, setAviso] = useState('');
 
 
   {/*Llamamos a las funciones para recuperar los datos ingresados cuando se cambie el campo*/}
@@ -74,6 +74,9 @@ const Login = (props) => {
                  const { from } = props.location.state || { from: { pathname: "/Select" } };
                  props.history.push(from);*/}
 
+             } else {
+               setMensaje('danger');
+               setAviso('La cuenta o contraseña es incorrecta verifique');
              }
          });
       {/*****************************************************************************************/}
