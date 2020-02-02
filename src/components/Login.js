@@ -5,7 +5,8 @@ import '../styles/Login.css';
 import logo from '../images/LogoBoa.png';
 import bolivia from '../images/escudoBolivia.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+//Importamos la varible global para mandar los datos
+import {UserContext} from "./userContext";
 //Importamos el servicio REST y la encriptacion md5 instalado explicado mas abajo
 import {clientRestPxp} from "clientpxpjs/js/clientRestPxp";
 import {md5} from "clientpxpjs/js/md5";
@@ -13,14 +14,10 @@ import {md5} from "clientpxpjs/js/md5";
 //Importamos componentes de bootstrap
 import { Alert } from 'reactstrap';
 
+
+
 const Login = (props) => {
 
-  {/*Llamamos al componente de bootstrap para los mensajes*/}
-  const [visible, setVisible] = useState(true);
-
-  const onDismiss = () => {
-    setVisible(false);
-  }
 
 
 
@@ -29,7 +26,17 @@ const Login = (props) => {
   const [contraseña, setContraseña] = useState('');
   const [carga, setCarga] = useState('');
 
-  {/*creamos hooks para cambiar el estado del mensaje*/}
+    {/*Aqui creamos la variable globa*/}
+    const {userContext, setUserContext} = useContext(UserContext);
+
+    {/*Llamamos al componente de bootstrap para los mensajes*/}
+    const [visible, setVisible] = useState(true);
+
+    const onDismiss = () => {
+        setVisible(false);
+    }
+
+    {/*creamos hooks para cambiar el estado del mensaje*/}
   const [mensaje, setMensaje] = useState('');
   const [aviso, setAviso] = useState('');
 
@@ -38,12 +45,12 @@ const Login = (props) => {
   const handleCuenta = e => {
         {/*Enviamos el datos en la funcion creada por los hooks*/}
         setCuenta(e.target.value);
-        console.log("llega la cuenta",e.target.value);
+
     }
   const handleContraseña = e => {
     {/*Enviamos el datos en la funcion creada por los hooks*/}
       setContraseña(e.target.value);
-      console.log("llega la cuenta",e.target.value);
+
 
   }
 
@@ -68,11 +75,11 @@ const Login = (props) => {
              if(resp.success) {
                setMensaje('info');
                setAviso('Datos Correctos');
-               console.log("llega aqui los props para redireccionar IRVA",props.history);
+                 {/*console.log("llega aqui los props para redireccionar IRVA",props.history);*/}
 
-                {/* setUserContext({...resp, client:client, user:user, password:md5(password)});
-                 const { from } = props.location.state || { from: { pathname: "/Select" } };
-                 props.history.push(from);*/}
+                 setUserContext({...resp, client:client, cuenta2:cuenta, contraseña2:md5(contraseña)});
+                 const { from } = props.location.state || { from: { pathname: "/Index" } };
+                 props.history.push(from);
 
              } else {
                setMensaje('danger');
@@ -86,9 +93,9 @@ const Login = (props) => {
 
   return (
     <div>
-      {carga && <Alert color={mensaje} isOpen={visible} toggle={onDismiss}>
+      {carga && <center><Alert style={{width:40+'%',position: 'fixed',marginLeft:30+'%'}} color={mensaje} isOpen={visible} toggle={onDismiss}>
                   {aviso}
-                </Alert>
+                </Alert></center>
       }
     <div className="container">
     	<div className="d-flex justify-content-center h-100">

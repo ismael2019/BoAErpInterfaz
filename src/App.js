@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useMemo, useState} from 'react';
+
+import {UserContext} from "./components/userContext";
 
 //llamamos los componentes que nos creamos
 import Login from "./components/Login";
@@ -10,16 +12,21 @@ import {BrowserRouter, Route, Link} from "react-router-dom";
 
 
 function App() {
+
+    const [userContext, setUserContext] = useState(null);
+
+    const value = useMemo(()=> ({userContext, setUserContext}), [userContext, setUserContext])
+
+
   return (
     <div>
-      <BrowserRouter>
+        <BrowserRouter>
+            <UserContext.Provider value={value}>
+                <Route exact path="/Index" component={Inicio}/>
+                <Route path="/Login" component={Login}/>
+            </UserContext.Provider>
 
-                <switch>
-                    <Route  exact path="/Index" component={Inicio}/>
-                    <Route  path="/Login" component={Login}/>
-                </switch>
-
-            </BrowserRouter>
+        </BrowserRouter>
     </div>
   );
 }
